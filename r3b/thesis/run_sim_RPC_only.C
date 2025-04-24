@@ -1,20 +1,24 @@
-void run_sim()
+void run_sim_RPC_only()
 {
     TString transport = "TGeant4";
 
-    TString outFile = "sim.root";
-    TString parFile = "par.root";
+    TString outFile = "sim_RPC_only.root";
+    //TString outFile = "sim.root";
+    TString parFile = "par_RPC_only.root";
+    //TString parFile = "par.root";
 
     Bool_t magnet = kTRUE;
     Float_t fieldScale = -0.6;
+    Float_t fMeasCurrent = -2868;
 
     TString generator1 = "box";
     TString generator2 = "ascii";
     TString generator3 = "r3b";
-    TString generator = generator1;
+    TString generator4 = "inclroot";
+    TString generator = generator4;
     TString inputFile = "";
 
-    Int_t nEvents = 100;
+    Int_t nEvents = 10000;
     Bool_t storeTrajectories = kTRUE;
     Int_t randomSeed = 335566; // 0 for time-dependent random numbers
 
@@ -24,6 +28,12 @@ void run_sim()
     TString target3 = "Para45";
     TString target4 = "LiH";
     TString targetType = target4;
+
+    TString fEventFile;
+        if (generator.CompareTo("ascii") == 0)
+                fEventFile = "inputs/test_QFS_S522_16C.txt";
+        else if (generator.CompareTo("inclroot") == 0)
+                fEventFile = "/home/pcopeto/Programs/R3B/R3BRoot/macros/r3b/thesis/inputs/p_O22_630.root";
 
     // ------------------------------------------------------------------------
     // Stable part ------------------------------------------------------------
@@ -54,20 +64,21 @@ void run_sim()
     // To skip the detector comment out the line with: run->AddModule(...
 
     // Target
-    run->AddModule(new R3BTarget(targetType, "target_" + targetType + ".geo.root"));
+    //run->AddModule(new R3BTarget(targetType, "target_" + targetType + ".geo.root"));
 
     // GLAD
     if (nEvents > 100)
-       run->AddModule(new R3BGladMagnet("glad_v2023.1.geo.root")); // GLAD should not be moved or rotated
+       run->AddModule(new R3BGladMagnet("glad_v2025.1.geo.root")); // GLAD should not be moved or rotated
 
     // PSP
-    run->AddModule(new R3BPsp("psp_v13a.geo.root", {}, -221., -89., 94.1));
-
+    //run->AddModule(new R3BPsp("psp_v13a.geo.root", {}, -221., -89., 94.1));
+/*
     // CALIFA
     R3BCalifa* califa = new R3BCalifa("califa_full.geo.root");
     califa->SelectGeometryVersion(2020);
     run->AddModule(califa);
-
+*/
+/*
     // Fi4 detector
     run->AddModule(new R3BFiber("Fi4","fi4_v17a.geo.root", DetectorId::kFI4,
                               { -73.274339 - TMath::Tan(TMath::DegToRad() * 16.7) * 100, 0.069976, 513.649524 + 100. },
@@ -82,10 +93,8 @@ void run_sim()
     run->AddModule(new R3BFiber("Fi5","fi5_v17a.geo.root", DetectorId::kFI5,
                               { -73.274339 - TMath::Tan(TMath::DegToRad() * 16.7) * 300, 0.069976, 513.649524 + 300. },
                               { "", -90., 16.7, 90. }));
-
-    // sfi detector
-    run->AddModule(new R3Bsfi("sfi_v17a.geo.root", { 0, 0, -200 }));
-
+*/
+/*
     // Tof
     run->AddModule(new R3BTof("tof_v17a.geo.root", { -417.359574, 2.400000, 960.777114 }, { "", -90., +31., 90. }));
 
@@ -94,6 +103,14 @@ void run_sim()
         new R3BTofd("dtof_v17a.geo.root",
                     { -155.824045 + (2.7 * 10) * TMath::Cos(16.7 * TMath::DegToRad()), 0.523976, 761.870346 },
                     { "", -90., +16.7, 90. }));
+*/
+
+    // RPC
+    run->AddModule(new R3BRpc("tof_rpc_v2022.12.geo.root", {-270, 0., 700}, TGeoRotation("R3BRpc", 90., -37., -90.)));
+
+
+
+
 
     // NeuLAND
     // run->AddModule(new R3BNeuland("neuland_test.geo.root", { 0., 0., 1400. + 12 * 5. }));
@@ -103,7 +120,8 @@ void run_sim()
     // If the Global Position of the Magnet is changed
     // the Field Map has to be transformed accordingly
     R3BGladFieldMap* magField = new R3BGladFieldMap("R3BGladMap");
-    magField->SetScale(fieldScale);
+    //magField->SetScale(fieldScale);
+    magField->SetScale(fMeasCurrent/3583.81);
 
     if (magnet == kTRUE)
     {
@@ -126,12 +144,19 @@ void run_sim()
         Double32_t theta2 = 2.;
         Double32_t momentum = 1.5;
         FairBoxGenerator* boxGen = new FairBoxGenerator(pdgId, 3);
+      /*  boxGen->SetThetaRange(theta1, theta2);
+        boxGen->SetPRange(momentum, momentum * 1.2);
+        boxGen->SetPhiRange(0, 360);
+        boxGen->SetXYZ(0.0, 0.0, -1.5);
+        primGen->AddGenerator(boxGen);
+    */
         boxGen->SetThetaRange(theta1, theta2);
         boxGen->SetPRange(momentum, momentum * 1.2);
         boxGen->SetPhiRange(0, 360);
         boxGen->SetXYZ(0.0, 0.0, -1.5);
         primGen->AddGenerator(boxGen);
 
+/*
         // 128-Sn fragment
         R3BIonGenerator* ionGen = new R3BIonGenerator(50, 128, 50, 10, 1.3);
         ionGen->Beam.SetVertexDistribution(
@@ -145,7 +170,19 @@ void run_sim()
         boxGen_n->SetPhiRange(0, 360);
         boxGen_n->SetXYZ(0.0, 0.0, -1.5);
         primGen->AddGenerator(boxGen_n);
+*/
     }
+
+    if (generator.CompareTo("inclroot") == 0) {
+                R3BINCLRootGenerator *gen =
+                        new R3BINCLRootGenerator(fEventFile.Data());
+                //new R3BINCLRootGenerator((fEventFile).Data());
+
+                //gen->SetXYZ(targetPar->GetPosX(), targetPar->GetPosY(), targetPar->GetPosZ()+2.5);
+                gen->SetXYZ(0.5, -0.35, 0.5);
+                gen->SetDxDyDz(0.4, 0.19, 5);
+                primGen->AddGenerator(gen);
+        }
 
     if (generator.CompareTo("ascii") == 0)
     {

@@ -1,0 +1,50 @@
+#0  __internal_syscall_cancel (a1=8187, a2=a2
+entry=140736670080136, a3=a3
+entry=0, a4=a4
+entry=0, a5=a5
+entry=0, a6=a6
+entry=0, nr=61) at ./nptl/cancellation.c:44
+#1  0x00007f5a95a996ad in __syscall_cancel (a1=<optimized out>, a2=a2
+entry=140736670080136, a3=a3
+entry=0, a4=a4
+entry=0, a5=a5
+entry=0, a6=a6
+entry=0, nr=61) at ./nptl/cancellation.c:75
+#2  0x00007f5a95b04787 in __GI___wait4 (pid=<optimized out>, stat_loc=stat_loc
+entry=0x7fffcf3a1c88, options=options
+entry=0, usage=usage
+entry=0x0) at ../sysdeps/unix/sysv/linux/wait4.c:30
+#3  0x00007f5a95b047b7 in __GI___waitpid (pid=<optimized out>, stat_loc=stat_loc
+entry=0x7fffcf3a1c88, options=options
+entry=0) at ./posix/waitpid.c:38
+#4  0x00007f5a95a5cf7b in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:172
+#5  0x00007f5a962ecf78 in TUnixSystem::Exec (this=0x55731645b570, shellcmd=<optimized out>) at /home/pcopeto/Programs/R3B/FairSoft/build/Source/root/core/unix/src/TUnixSystem.cxx:2120
+#6  TUnixSystem::StackTrace (this=0x55731645b570) at /home/pcopeto/Programs/R3B/FairSoft/build/Source/root/core/unix/src/TUnixSystem.cxx:2411
+#7  0x00007f5a957ec75c in FairLogger::LogFatalMessage () at /home/pcopeto/Programs/R3B/FairRoot/fairroot/tools/FairLogger.cxx:196
+#8  0x00007f5a8346e5a4 in std::function<void()>::operator() (this=0x7f5a83499920 <fair::Logger::fFatalCallback>) at /usr/include/c++/14/bits/std_function.h:587
+#9  fair::Logger::~Logger (this=0x7fffcf3a43f0, __in_chrg=<optimized out>) at /home/pcopeto/Programs/R3B/FairSoft/build/Source/fairlogger/logger/Logger.cxx:276
+#10 0x00007f5a816da43f in R3BDetector::ConstructGeometry (this=0x557316b6c260) at /usr/include/c++/14/bits/new_allocator.h:104
+#11 0x00007f5a82914a85 in FairMCApplication::ConstructGeometry (this=0x5573215a0610) at /home/pcopeto/Programs/R3B/FairRoot/fairroot/base/sim/FairMCApplication.cxx:767
+#12 0x00007f5a80ca042f in TG4RunManager::ConfigureRunManager (this=this
+entry=0x55731a566fc0) at /home/pcopeto/Programs/R3B/FairSoft/build/Source/geant4_vmc/source/run/src/TG4RunManager.cxx:212
+#13 0x00007f5a80ca0f82 in TG4RunManager::TG4RunManager (this=this
+entry=0x55731a566fc0, runConfiguration=runConfiguration
+entry=0x5573210e64b0, argc=argc
+entry=0, argv=argv
+entry=0x0) at /home/pcopeto/Programs/R3B/FairSoft/build/Source/geant4_vmc/source/run/src/TG4RunManager.cxx:133
+#14 0x00007f5a80ca3d0b in TGeant4::TGeant4 (this=0x55731f5c8140, name=<optimized out>, title=<optimized out>, configuration=0x5573210e64b0, argc=0, argv=0x0) at /home/pcopeto/Programs/R3B/FairSoft/build/Source/geant4_vmc/source/run/src/TGeant4.cxx:216
+#15 0x00007f5a81995169 in ?? ()
+#16 0x00007fffcf3a6120 in ?? ()
+#17 0x00007f5a96460160 in vtable for TString () from /home/pcopeto/Programs/R3B/FairSoft/install//lib/libCore.so.6.30
+#18 0x6f6f526d6f656710 in ?? ()
+#19 0x00007f5a91990074 in llvm::orc::LocalIndirectStubsManager<llvm::orc::OrcX86_64_Win32>::createStubs(llvm::StringMap<std::pair<unsigned long, llvm::JITSymbolFlags>, llvm::MallocAllocator> const&) () from /home/pcopeto/Programs/R3B/FairSoft/install//lib/libCling.so
+#20 0x00005573164f2b20 in ?? ()
+#21 0x00005573164f2bd0 in ?? ()
+#22 0x00007f5a94e8e1f0 in vtable for llvm::orc::MaterializationTask () from /home/pcopeto/Programs/R3B/FairSoft/install//lib/libCling.so
+#23 0x000055732503e300 in ?? ()
+#24 0x00005573164f2b20 in ?? ()
+#25 0x0afc08de574db243 in ?? ()
+#26 0x00005573250431d0 in ?? ()
+#27 0xffffffffffffbc10 in ?? ()
+#28 0x0000000000000002 in ?? ()
+#29 0x0000000000000000 in ?? ()

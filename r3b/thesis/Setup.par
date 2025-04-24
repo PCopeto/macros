@@ -1,0 +1,250 @@
+#############################################################################
+#############################################################################
+# Class:   TargetGeoPar
+# Context: GeometryParameterContext
+#############################################################################
+[TargetGeoPar]
+//----------------------------------------------------------------------------
+PositionX: Double_t 0.
+PositionY: Double_t 0.
+PositionZ: Double_t -1.75.
+RotationX: Double_t 0.
+RotationY: Double_t 0.
+RotationZ: Double_t 0.
+DimensionX: Double_t 3.0
+DimensionY: Double_t 3.0
+DimensionZ: Double_t 1.5
+SigmaX: Double_t 0.
+SigmaY: Double_t 0.
+Z: Double_t 1.
+A: Double_t 1.
+Density: Double_t 0.07
+IonisationEnergy: Double_t 55.9e-6
+#############################################################################
+#############################################################################
+# Class:   CalifaGeoPar
+# Context: GeometryParameterContext
+#############################################################################
+[CalifaGeoPar]
+//----------------------------------------------------------------------------
+PositionX: Double_t 0.
+PositionY: Double_t 0.
+PositionZ: Double_t 0.
+RotationX: Double_t 0.
+RotationY: Double_t 0.
+RotationZ: Double_t 0.
+DimensionX: Double_t 100.0
+DimensionY: Double_t 100.0
+DimensionZ: Double_t 100.0
+SigmaX: Double_t 1.
+SigmaY: Double_t 1.
+Z: Double_t 1.
+A: Double_t 1.
+Density: Double_t 1.
+IonisationEnergy: Double_t 55.9e-6
+#############################################################################
+#############################################################################
+# Class:   Mwpc0GeoPar
+# Context: GeometryParameterContext
+#############################################################################
+[Mwpc0GeoPar]
+//----------------------------------------------------------------------------
+PositionX: Double_t 0.
+PositionY: Double_t 0.
+PositionZ: Double_t -269.3
+RotationX: Double_t 0.
+RotationY: Double_t 0.
+RotationZ: Double_t 0.
+DimensionX: Double_t 20.
+DimensionY: Double_t 20.
+DimensionZ: Double_t 4.5
+SigmaX: Double_t 0.1
+SigmaY: Double_t 1.
+Z: Double_t 14.
+A: Double_t 28.0855
+Density: Double_t 1.0
+IonisationEnergy: Double_t 57.4e-6
+#############################################################################
+#############################################################################
+[Mwpc1GeoPar]
+//----------------------------------------------------------------------------
+PositionX: Double_t 0.
+PositionY: Double_t 0.
+PositionZ: Double_t -147.8
+RotationX: Double_t 0.
+RotationY: Double_t 0.
+RotationZ: Double_t 0.
+DimensionX: Double_t 20.
+DimensionY: Double_t 20.
+DimensionZ: Double_t 4.5
+SigmaX: Double_t 0.1
+SigmaY: Double_t 1.
+Z: Double_t 14.
+A: Double_t 28.0855
+Density: Double_t 1.0
+IonisationEnergy: Double_t 57.4e-6
+#############################################################################
+#############################################################################
+# Class:   MusicGeoPar
+# Context: GeometryParameterContext
+#############################################################################
+[MusicGeoPar]
+//----------------------------------------------------------------------------
+PositionX: Double_t 0.
+PositionY: Double_t 0.
+PositionZ: Double_t -190.
+RotationX: Double_t 0.
+RotationY: Double_t 0.
+RotationZ: Double_t 0.
+DimensionX: Double_t 20.
+DimensionY: Double_t 20.
+DimensionZ: Double_t 40.
+SigmaX: Double_t 0.1
+SigmaY: Double_t 1.
+Z: Double_t 14.
+A: Double_t 28.0855
+Density: Double_t 1.0
+IonisationEnergy: Double_t 57.4e-6
+#############################################################################
+#############################################################################
+# Class:   RpcGeoPar
+# Context: GeometryParameterContext
+#############################################################################
+[RpcGeoPar]
+//----------------------------------------------------------------------------
+PositionX: Double_t -191.648
+PositionY: Double_t 0.
+PositionZ: Double_t 579.815
+RotationX: Double_t 0.
+RotationY: Double_t -31.84
+RotationZ: Double_t 0.
+DimensionX: Double_t 20.
+DimensionY: Double_t 20.
+DimensionZ: Double_t 40.
+SigmaX: Double_t 0.1
+SigmaY: Double_t 1.
+Z: Double_t 14.
+A: Double_t 28.0855
+Density: Double_t 1.0
+IonisationEnergy: Double_t 57.4e-6
+#############################################################################
+#############################################################################
+# Class:   GladFieldPar
+# Context: GladFieldParContext
+#############################################################################
+[GladFieldPar]
+//---------------------------------------------------------------------------
+Bz: Float_t 2.155
+EffLength: Float_t 210.
+FieldCentre: Float_t 271.4
+#############################################################################
+#############################################################################
+# Class:   Fi30GeoPar
+# Context: GeometryParameterContext
+#############################################################################
+[Fi30GeoPar]
+//----------------------------------------------------------------------------
+PositionX: Double_t -111.187
+PositionY: Double_t 0.0
+PositionZ: Double_t 717.148
+RotationX: Double_t -14.
+RotationY: Double_t 0.
+RotationZ: Double_t 90.
+DimensionX: Double_t 50.
+DimensionY: Double_t 50.
+DimensionZ: Double_t 1.
+SigmaX: Double_t 0.1
+SigmaY: Double_t 1.
+Z: Double_t 14.
+A: Double_t 28.0855
+Density: Double_t 1.0
+IonisationEnergy: Double_t 57.4e-6
+#############################################################################
+#############################################################################
+# Class:   Fi31GeoPar
+# Context: GeometryParameterContext
+#############################################################################
+[Fi31GeoPar]
+//----------------------------------------------------------------------------
+PositionX: Double_t -169.829
+PositionY: Double_t 0.0
+PositionZ: Double_t 858.246
+RotationX: Double_t 0.0
+RotationY: Double_t -194.0
+RotationZ: Double_t 0.0
+DimensionX: Double_t 50.0
+DimensionY: Double_t 50.0
+DimensionZ: Double_t 1.0
+SigmaX: Double_t 0.1
+SigmaY: Double_t 1.0
+Z: Double_t 14.0
+A: Double_t 28.0855
+Density: Double_t 1.0
+IonisationEnergy: Double_t 57.4e-6
+#############################################################################
+#############################################################################
+# Class:   Fi32GeoPar
+# Context: GeometryParameterContext
+#############################################################################
+[Fi32GeoPar]
+//----------------------------------------------------------------------------
+PositionX: Double_t -101.127
+PositionY: Double_t 0.0
+PositionZ: Double_t 692.405
+RotationX: Double_t 0.0
+RotationY: Double_t -14.0
+RotationZ: Double_t 0.0
+DimensionX: Double_t 50.
+DimensionY: Double_t 50.
+DimensionZ: Double_t 1.
+SigmaX: Double_t 0.1
+SigmaY: Double_t 1.
+Z: Double_t 14.
+A: Double_t 28.0855
+Density: Double_t 1.0
+IonisationEnergy: Double_t 57.4e-6
+#############################################################################
+#############################################################################
+# Class:   Fi33GeoPar
+# Context: GeometryParameterContext
+#############################################################################
+[Fi33GeoPar]
+//----------------------------------------------------------------------------
+PositionX: Double_t -116.087
+PositionY: Double_t 0.0
+PositionZ: Double_t 854.089
+RotationX: Double_t 0.0
+RotationY: Double_t -14.0
+RotationZ: Double_t 0.0
+DimensionX: Double_t 50.
+DimensionY: Double_t 50.
+DimensionZ: Double_t 1.
+SigmaX: Double_t 0.1
+SigmaY: Double_t 1.
+Z: Double_t 14.
+A: Double_t 28.0855
+Density: Double_t 1.0
+IonisationEnergy: Double_t 57.4e-6
+#############################################################################
+#############################################################################
+# Class:   tofdGeoPar
+# Context: GeometryParameterContext
+#############################################################################
+[tofdGeoPar]
+//----------------------------------------------------------------------------
+PositionX: Double_t -275.4
+PositionY: Double_t 0.
+PositionZ: Double_t 1376
+RotationX: Double_t 0.
+RotationY: Double_t -14.0
+RotationZ: Double_t 0.
+DimensionX: Double_t 125.
+DimensionY: Double_t 100.
+DimensionZ: Double_t 12.
+SigmaX: Double_t 13.5
+SigmaY: Double_t 1.0
+Z: Double_t 5.57354
+A: Double_t 11.0723
+Density: Double_t 1.032
+IonisationEnergy: Double_t 57.4e-6
+#############################################################################

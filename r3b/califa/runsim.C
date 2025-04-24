@@ -13,7 +13,7 @@ void runsim(Int_t nEvents = 0)
     Bool_t fCalifaClusterFinder = true; // Apply hit finder task
 
     TString fMC = "TGeant4";       // MonteCarlo engine: TGeant3, TGeant4, TFluka
-    TString fGenerator = "gammas"; // Event generator type: box, gammas, r3b, ion, ascii
+    TString fGenerator = "box"; // Event generator type: box, gammas, r3b, ion, ascii
     TString fEventFile = "";       // Input event file in the case of ascii generator
 
     Int_t fFieldMap = -1;          // Magentic field map selector
