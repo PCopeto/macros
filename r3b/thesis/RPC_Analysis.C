@@ -115,6 +115,7 @@ TLorentzVector pbeam_tree;
 TH2F* h_Z_vs_AoZ = new TH2F("h_Z_vs_AoZ", "Z vs A/Z;A/Z;Z", 100, 1, 4, 120, 0, 10);
 TH2F* h_Z_vs_AoZ_gen = new TH2F("h_Z_vs_AoZ_gen", "gen Z vs A/Z;A/Z;Z", 100, 1, 4, 120, 0, 10);
 TH2F* RPCPosHit = new TH2F("RPCPosHit", "Hit Position in RPC;x;y", 500, -340, -200, 300, 120, -120);
+TH2F* AvsZ2RPCPosHit = new TH2F("AvsZ2RPCPosHit", "Hit Position in RPC for A/Q 2;x;y", 500, -340, -200, 300, 120, -120);
 TH1F* Multiplicity = new TH1F("Multiplicity", "Multiplicity in RPC;Multiplicity", 10, 0, 10);
 TH1F* NeutronMulti = new TH1F("Neutron_Multiplicity", "Neutron Multiplicity in RPCevents ;Neutron_Multiplicity", 10, 0, 10);
 TH1F* ChargedMulti = new TH1F("Charged_Particles_Multiplicity", "Charged Particles Multiplicity in RPCevents ;Charged_Particles_Multiplicity", 10, 0, 10);
@@ -435,6 +436,8 @@ void RPC_Analysis(){
           rpc_y = rpc_pos.Y();
 
           RPCPosHit->Fill(rpc_x,rpc_y);
+
+          if (A/Z==2) AvsZ2RPCPosHit->Fill(rpc_x,rpc_y);
 
           //cout << A << " " << Z << rpcTrackId << " " << rpc_pos.X() << " " << rpc_pos.Y() << " " << rpc_pos.Z() << endl;
 
