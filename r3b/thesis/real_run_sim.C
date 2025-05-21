@@ -1,9 +1,9 @@
-void run_sim()
+void real_run_sim()
 {
     TString transport = "TGeant4";
 
-    TString outFile = "sim.root";
-    TString parFile = "par.root";
+    TString outFile = "real_sim.root";
+    TString parFile = "real_par.root";
 
     Bool_t magnet = kTRUE;
     Float_t fieldScale = -0.6;
@@ -16,7 +16,7 @@ void run_sim()
     TString generator = generator4;
     TString inputFile = "";
 
-    Int_t nEvents = 100000;
+    Int_t nEvents = 10000;
     Bool_t storeTrajectories = kTRUE;
     Int_t randomSeed = 335566; // 0 for time-dependent random numbers
 
@@ -77,14 +77,16 @@ void run_sim()
     run->AddModule(califa);
 */
 
+    const Double_t Target_to_GLAD_flange = 106.2;
+    const Double_t Target_to_TP = Target_to_GLAD_flange + 165.0;
     // Fi30 detector
     run->AddModule(new R3BFiber("Fi30","fi30_v22a.geo.root", DetectorId::kFI30,
-                              { -140, 0.069976, 680 },
+                              { -435*sin(18*(M_PI/180)), 0.069976, Target_to_TP + 435*cos(18*(M_PI/180)) },
                               { "", -90., 18, 90. }));
 
     // Fi31 detector
     run->AddModule(new R3BFiber("Fi31","fi31_v22a.geo.root", DetectorId::kFI31,
-                              { -145, 0.069976, 685},
+                              { -485*sin(18*(M_PI/180)), 0.069976, Target_to_TP + 485*cos(18*(M_PI/180))},
                               { "", -90., 18, 90. }));
 /*
     // Fi5 detector
@@ -103,7 +105,7 @@ void run_sim()
 */
     // RPC
     //run->AddModule(new R3BRpc("tof_rpc_v2022.12.geo.root", {-270, 0., 700}, TGeoRotation("R3BRpc", 90., -37., -90.)));
-    run->AddModule(new R3BRpc("tof_rpc_v2022.12.geo.root", {-265, 0., 640}, TGeoRotation("R3BRpc", 90., -37., -90.)));
+    run->AddModule(new R3BRpc("tof_rpc_v2022.12.geo.root", {-224.778, 0., 569.490}, TGeoRotation("R3BRpc", 90., -37., -90.)));
 
 
 
@@ -130,7 +132,7 @@ void run_sim()
     }
 
     // -----   Create PrimaryGenerator   --------------------------------------
-    // 1 - Create the Main API class for the Generator
+    // 1 - Create the Main AM_PI class for the Generator
     FairPrimaryGenerator* primGen = new FairPrimaryGenerator();
 
     if (generator.CompareTo("box") == 0)
